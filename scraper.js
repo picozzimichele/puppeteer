@@ -24,5 +24,26 @@ const keywork = "Mobile";
     await page.type("input#programSearch", keywork, { delay: 100 });
     await btn.click();
 
+    await page.waitForNavigation({ waitUntil: "load" });
+    await page.waitForSelector("table.tableSortList");
+    await page.screenshot({ path: "./screens/algonquin2.png" });
+    const data = await page.$$eval("table.tableSortList tbody tr", (rows) => {
+        return rows
+            .map((row) => {
+                if (row.classList.contains("odd") || row.classList.contains("even")) {
+                    let tds = row.querySelectorAll("td");
+                    return {
+                        name: tds[1].innerText,
+                        area: tds[2].innerText,
+                        campus: tds[3].innerText,
+                        credientials: tds[4].innerText,
+                        length: tds[5].innerText,
+                    };
+                }
+            })
+            .filter((row) => row);
+    });
+
+    console.log({ data });
     await browser.close();
 })();
