@@ -1,0 +1,15 @@
+2023/12/18-13:45:39.828 3d03 Reusing MANIFEST /Users/michelepicozzi/Documents/Coding/Puppeteer/data/microsoftjobs/Default/Session Storage/MANIFEST-000001
+2023/12/18-13:45:39.828 3d03 Recovering log #27
+2023/12/18-13:45:39.829 3d03 Reusing old log /Users/michelepicozzi/Documents/Coding/Puppeteer/data/microsoftjobs/Default/Session Storage/000027.log 
+2023/12/18-13:45:39.830 2e03 Compacting 4@0 + 1@1 files
+2023/12/18-13:45:39.856 2e03 Generated table #30@0: 152 keys, 48763 bytes
+2023/12/18-13:45:39.857 2e03 Compacted 4@0 + 1@1 files => 48763 bytes
+2023/12/18-13:45:39.874 2e03 compacted to: files[ 0 1 1 0 0 0 0 ]
+2023/12/18-13:45:39.876 2e03 Delete type=2 #28
+2023/12/18-13:45:39.876 2e03 Delete type=2 #20
+2023/12/18-13:45:39.876 2e03 Delete type=2 #23
+2023/12/18-13:45:39.876 2e03 Delete type=2 #25
+2023/12/18-13:45:39.876 2e03 Delete type=2 #18
+2023/12/18-13:46:00.810 3d03 Level-0 table #32: started
+2023/12/18-13:46:00.816 3d03 Level-0 table #32: 46982 bytes OK
+2023/12/18-13:46:00.827 3d03 Delete type=0 #27
