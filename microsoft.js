@@ -26,18 +26,33 @@ import { writeFile } from "fs";
         await page.waitForXPath(
             "/html/body/div[1]/main/div[4]/div[2]/div/div[2]/div[1]/div[2]/div[1]/div/div[1]/div[1]/div/div/div[2]/div[1]/h2"
         );
-        const screenshot = await page.screenshot({ path: "./screens/microsoft.png" });
+        await page.screenshot({ path: "./screens/microsoft.png" });
 
-        const html = await page.evaluate(() => {
-            return document.documentElement.innerHTML;
-        });
-
-        const jobTitle = await page.$x(
+        const jobTitleH2 = await page.$x(
             '//*[@id="job-search-app"]/div/div[2]/div[1]/div[2]/div[1]/div/div[1]/div[1]/div/div/div[2]/div[1]/h2'
         );
-        let h2_value = await page.evaluate((el) => el.textContent, jobTitle[0]);
+        let h2_value = await page.evaluate((el) => el.textContent, jobTitleH2[0]);
         console.log({ h2_value });
-        console.log({ html });
+        const titles = await page.evaluate((...jobTitleH2) => {
+            return jobTitleH2.map((e) => e.textContent);
+        }, ...jobTitleH2);
+
+        console.log({ titles });
+
+        const grabTitles = await page.evaluate(() => {
+            let titlesArray = [];
+            const jobsDiv = document.querySelectorAll("div.ms-List-cell");
+
+            jobsDiv.forEach((job) => {
+                const jobTitle = job.querySelector("h2");
+                const jobTitleText = jobTitle.innerText;
+                titlesArray.push({ jobTitle: jobTitleText });
+            });
+
+            return titlesArray;
+        });
+
+        console.log({ grabTitles });
         await browser.close();
     } catch (e) {
         console.log({ e });
